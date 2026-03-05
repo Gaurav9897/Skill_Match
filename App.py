@@ -5,11 +5,11 @@ import os
 
 # First lets configure the model 
 
-gemini_api_key = os.getenv('test-project-1')
+gemini_api_key = os.secrets('GEMINI_API_KEY')
 model = ChatGoogleGenerativeAI(
-    model = 'gemini-2.5-flash-lite',
-    api_key = gemini_api_key,
-    temperature=0.75,
+    model="gemini-1.5-flash",
+    google_api_key=gemini_api_key,
+    temperature=0.9
 )
 model = ChatGoogleGenerativeAI(
     model="gemini-1.5-flash",
@@ -74,4 +74,5 @@ if st.button("Match Skills"):
 
         response = model.invoke(prompt)
         st.write(response.content)
+
 
