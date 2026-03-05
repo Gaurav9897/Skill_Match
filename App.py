@@ -7,8 +7,8 @@ import os
 
 gemini_api_key = os.getenv('GOOGLE_API_KEY1')
 model = ChatGoogleGenerativeAI(
-    model='gemini-2.5-flash-lite',
-    api_key=gemini_api_key,
+    model='gemini-1.5-flash',
+   google_ api_key=gemini_api_key,
     temperature = 0.9
 )
 
@@ -62,4 +62,5 @@ if st.button('SUMBIT'):
 
 
         response = model.invoke(prompt)
+
         st.write(response.content)
