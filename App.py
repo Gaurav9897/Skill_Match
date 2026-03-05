@@ -11,7 +11,11 @@ model = ChatGoogleGenerativeAI(
     api_key = gemini_api_key,
     temperature=0.75,
 )
-
+model = ChatGoogleGenerativeAI(
+    model="gemini-1.5-flash",
+    google_api_key=gemini_api_key,
+    temperature=0.9
+)
 
 # Lets create a side bar to upload the resume 
 st.sidebar.title(':red[UPLOAD YOUR RESUME]')
@@ -70,3 +74,4 @@ if st.button("Match Skills"):
 
         response = model.invoke(prompt)
         st.write(response.content)
+
