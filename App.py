@@ -2,14 +2,15 @@ import streamlit as st
 from pdfextractor import text_extractor
 from langchain_google_genai import ChatGoogleGenerativeAI
 import os
-
+import os
+print(os.getenv("GOOGLE_API_KEY"))
 # First lets configure the model 
 
-gemini_api_key = st.secrets['GEMINI_API_KEY']
+gemini_api_key = os.getenv('GOOGLE_API_KEY')
 model = ChatGoogleGenerativeAI(
-    model="gemini-1.5-flash",
-    google_api_key=gemini_api_key,
-    temperature=0.9
+    model = 'gemini-2.5-flash-lite',
+    api_key = gemini_api_key,
+    temperature=0.75,
 )
 
 # Lets create a side bar to upload the resume 
@@ -69,6 +70,7 @@ if st.button("Match Skills"):
 
         response = model.invoke(prompt)
         st.write(response.content)
+
 
 
 
